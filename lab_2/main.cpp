@@ -2,16 +2,13 @@
 
 using namespace std;
 
-int fill_array(int * const p, int len)
+void fill_array(int * const p, int len)
 {
-
 	cout << "Enter array elements: ";
 	for (int i=0; i < len; i++)
 	{
 		cin >> p[i];
 	}
-
-	return len;
 }
 
 void shift_array(int * const p, int len, int shift)
@@ -47,7 +44,7 @@ int main()
 	cin >> len;
 	p = new int [len];	
 
-	len = fill_array(p, len);
+	fill_array(p, len);
 
 	cout << "Enter shifting value: ";
 	cin >> shift;
