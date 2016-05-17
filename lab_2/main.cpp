@@ -56,5 +56,6 @@ int main()
 	shift_array(p, len, shift);
 
 	print_array(p, len);
+	delete p;
 	return 0;
 }
