@@ -3,47 +3,58 @@
 
 using namespace std;
 
-double eval_func(double x)
+int fill_array(int * const p, int len)
 {
-	return sin(4*x + 1)/(2*x + 0.1);
+
+	cout << "Enter array elements: ";
+	for (int i=0; i < len; i++)
+	{
+		cin >> p[i];
+	}
+
+	return len;
 }
 
-double eval_integral(double a, double b, unsigned int strips)
+void shift_array(int * const p, int len, int shift)
 {
-	double step, integral = 0;
-	
-	for(step = (b - a)/strips; a < b; b -= step)
+	while (shift--)
 	{
-		integral +=  step * eval_func(b);
+		int temp = p[len - 1];
+		int i = len - 1;
+		while(i--)
+		{
+			p[i+1] = p[i];
+		}
+		p[0] = temp; 
 	}
-	return integral;		
+}
+
+void print_array(int * const p, int len)
+{
+	for(int i=0; i < len; i++)
+	{
+		cout << p[i] << " ";
+	}
+	cout << endl;
 }
 
 int main()
 {
-	double a, b, accuracy;
+	int *p;
+	int len;
+	int shift;
 
-	cout << "Enter left endpoint: ";
-	cin >> a;
-	cout << "Enter right endpoint: ";
-	cin >> b;
-	cout << "Enter accuracy: ";
-	cin >> accuracy;
+	cout << "Enter array length: ";
+	cin >> len;
+	p = new int(len);	
 
-	double i1, i2;
+	len = fill_array(p, len);
+
+	cout << "Enter shifting value: ";
+	cin >> shift;
 	
-	unsigned int strips = 1;
+	shift_array(p, len, shift);
 
-	i2 = eval_integral(a, b, strips);
-
-	do
-	{
-		i1 = i2;
-		strips *= 2;
-		i2 = eval_integral(a, b, strips);
-	} while ( abs(i1 - i2) > accuracy);
-
-	cout << "Integral = " << i2 << endl << "Strips = " << strips << endl;
-
+	print_array(p, len);
 	return 0;
 }

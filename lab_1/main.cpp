@@ -12,9 +12,9 @@ double eval_integral(double a, double b, unsigned int strips)
 {
 	double step, integral = 0;
 	
-	for(step = (b - a)/strips; a < b; a += step)
+	for(step = (b - a)/strips; a < b; b -= step)
 	{
-		integral +=  step * eval_func(a);
+		integral +=  step * eval_func(b);
 	}
 	return integral;		
 }
