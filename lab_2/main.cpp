@@ -46,7 +46,7 @@ int main()
 
 	cout << "Enter array length: ";
 	cin >> len;
-	p = new int(len);	
+	p = new int [len];	
 
 	len = fill_array(p, len);
 
@@ -56,6 +56,6 @@ int main()
 	shift_array(p, len, shift);
 
 	print_array(p, len);
-	delete p;
+	delete [] p;
 	return 0;
 }
